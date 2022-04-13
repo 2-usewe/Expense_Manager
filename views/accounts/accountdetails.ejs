@@ -1,0 +1,53 @@
+<%- include ('../partial/_header') %>
+<body>
+    <nav class="navbar navbar-inverse" >
+        <div class="container-fluid">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="/">Home</a></li>
+            <li><a href="signup"><i class="fa-solid fa-user" ></i>:<%= currentUser.username %>
+            </a></li>
+                <li><a href="newaccount">Add Account</a></li>
+                <li><a href="newtransaction">Add Transaction</a></li>
+            <li><a href="#">Log Out</a></li>
+          </ul>
+        </div>
+    </nav>
+    <div class="message"><h2 style="color: white; text-align: center;">Account Details!<i class="fa-solid fa-money-check-dollar"></i></h2></div>
+        <div class="details" style="margin-left:25%; margin-right: 25%; margin-top: 100px;
+    padding: 10px;background-color: rgb(75, 106, 96); border-radius: 5px;">
+        <div class="row">
+            <div><h1 style="text-align: center; color: white;"><i class="fa-solid fa-user" ></i></h1></div>
+            <div class="row"><h4 style="color: white;text-align: center;"><%= currentUser.username %></h4></div>
+            <label for="accountname" ><h5>Account Name:</h5></label>
+            <h4><%= account.accountname%></h4>
+        </div>
+        <div class="row">
+            <label for="description" ><h5>Description:</h5></label>
+            <h4><%= account.description %></h4>
+        </div>
+        <div class="row">
+            <label for="member" ><h5>Members:</h5></label>
+            <% account.members.forEach(function(member,index){ %>
+            <h4><%= index+1 %>.<span><%= member.username%> (<%=member.email%>)</span> </h4>
+            <% }) %>
+            <a href="/user/<%=account._id %>/addmember" class="btn border-shadow update">
+                <span class="text-gradient">Add Member </span>
+            </a>
+        </div>
+        <div class="row">
+            <label for="expense" ><h5>Expence:</h5></label>
+            <h4><%= expense + transfer %></h4>
+        </div>
+        <div class="row">
+            <label for="income" ><h5>Income:</h5></label>
+            <h4><%= income %></h4>
+        </div>
+        <div class="row">
+            <label for="total" ><h5>Total:</h5></label>
+            <h4><%=income-expense - transfer %></h4>
+        </div>
+        <a href="user" class="btn border-shadow update">
+            <span class="text-gradient">back </span>
+        </a>
+    </div>
+    <%- include ('../partial/_footer') %>

@@ -1,0 +1,42 @@
+<%- include ('../partial/_header') %>
+<body style="background-color:rgb(49, 50, 49);">
+    <nav class="navbar navbar-inverse" style="background: linear-gradient(rgb(45, 43, 43),rgb(120, 115, 115));">
+        <div class="container-fluid">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="index">Home</a></li>
+            <li><a href="signup"><i class="fa-solid fa-user" ></i>:<%= currentUser.username %>
+            </a></li>
+            <li><a href="newaccount">Add Account</a></li>
+            <li><a href="newtransaction">Add Transaction</a></li>
+            <li><a href="user">All</a></li>
+        <li><a href="/logout">Log Out</a></li>
+          </ul>
+        </div>
+      </nav>
+      <div class="container" style=" margin-top:30px">
+        <div class="row">
+            <div class="indigo-text center">
+                <h3 style="color:#26a69a">Edit your Account</h3>
+            </div>
+            <div class="col m4 hide-on-small-only"></div>
+            <form class="col m4 s12" action="/user/<%=accountId%>?_method=PUT" method="POST" style="border-radius: 20px;">
+                <div class="card-panel">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="accountname" type="text" class="validate" name="account[accountname]" value="<%=account.accountname %>" >
+                        </div>
+                    </div>
+                    <div class="row">
+                        <button class=" col s12 waves-effect waves-light btn center" type="submit">submit</button>
+                        <a href="/user" class="col s12 waves-effect waves-light btn center" style="margin-top: 10px; background-color: rgb(92, 46, 46);">
+                            <span class="text-gradient" > back </span>
+                        </a>     
+                    </div> 
+                </div>
+            </form>
+            <div class="col m4 hide-on-small-only"></div>
+        </div>
+</div>
+    
+       
+<%- include ('../partial/_footer') %>

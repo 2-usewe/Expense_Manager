@@ -1,0 +1,58 @@
+<%- include ('partial/_header') %>
+
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="/">Home</a></li>
+            <li><a href="signup"><i class="fa-solid fa-user" ></i>:<%= currentUser.username %>
+                </a></li>
+                <li><a href="newaccount">Add Account</a></li>
+                <li><a href="/addtransaction">Add Transaction</a></li>
+            <li><a href="/logout">Log Out</a></li>
+          </ul>
+        </div>
+      </nav>
+      <div class="message"><h2>Welcome to Expence Manager!<i class="fa-solid fa-money-check-dollar"></i></h2></div>
+      <div><h4 style="margin-left:5%;color: aliceblue;">Your accounts..</h2></div>
+    <header class="con_head">
+        <table class="Alltable">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Accounts name</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            
+            <tbody>
+                <% accounts.forEach(function(account){ %>
+                <tr>
+                    <td><%= account.accountname %> </td>
+                    <td>
+                        <a href="/user/<%=account._id%>/alltransaction" class="btn border-shadow update">
+                            <span class="text-gradient"> All</i> </span>
+                        </a>
+                        <a href="/user/<%=account._id%>" class="btn border-shadow update">
+                            <span class="text-gradient"> Account Details</i> </span>
+                        </a>
+                        <a href="/user/<%=account._id%>/editaccount" class="btn border-shadow update" style="background-color: rgb(48, 226, 28);">
+                            <span class="text-gradient" style="color: rgb(252, 252, 252);" > Edit Account </span>
+                        </a>
+                        <a href="/user/<%=account._id%>/deleteaccount?_method=DELETE" method="POST" class="btn border-shadow update" style="background-color: rgb(250, 13, 13);" >
+                            <span class="text-gradient" style="color: rgb(255, 251, 251);"><i class="fas fa-times"></i> </span>
+                        </a>
+                    </td>
+                </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </header>
+<div class="addbtn"></div>
+    <a href="newaccount" class="btn border-shadow extra">
+        <span class="text-gradient"> New Account </span>
+    </a>
+    <a href="/addtransaction" class="btn border-shadow extrax">
+        <span class="text-gradient"> New Transaction </span>
+    </a>
+       
+    <%- include ('partial/_footer') %>

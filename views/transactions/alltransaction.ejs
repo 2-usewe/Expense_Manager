@@ -1,0 +1,61 @@
+<%- include ('../partial/_header') %>
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="/">Home</a></li>
+            <li><a href="signup"><i class="fa-solid fa-user" ></i>:<%= currentUser.username %>
+            </a></li>
+                <li><a href="/newaccount">Add Account</a></li>
+                <li><a href="/user/<%= account._id%>/transactions/newtransaction">Add Transaction</a></li>
+            <li><a href="#">Log Out</a></li>
+          </ul>
+        </div>
+      </nav>
+      <div class="message"><h2>Welcome to Expence Manager!<i class="fa-solid fa-money-check-dollar"></i></h2></div>
+      <div><h4 style="margin-left:5%;color: aliceblue;">Your accounts..<%= account.accountname %></h2></div>
+    <header class="con_head">
+        <table class="Alltable">
+            <thead class="thead-dark">
+                <tr>
+                    <th>S.no.</th>
+                    <th>Date</th>
+                    <th>By</th>
+                    <th>Type</th>
+                    <th>Amount</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if(transactions.length>0) {%>
+                    <% transactions.forEach(function(transaction,index){ %>
+                <tr>
+                    <td><%=index+1%></td>
+                    <td><%=transaction.date.toDateString() %></td>
+                    <td><%=transaction.user.username %></td>
+                    <td><%=transaction.type %></td>
+                    <td><%=transaction.amount %></td>
+                    <td><%=transaction.description %></td>
+                    <% if(currentUser.username===transaction.user.username){%>
+                    <td>
+                        <a href="/user/<%= account._id%>/alltransactions/<%=transaction._id%>/edittransaction" class="btn border-shadow update" style="background-color: chartreuse;">
+                            <span class="text-gradient"> Edit  </span>
+                        </a>
+                        <a href="/user/<%= account._id%>/alltransactions/<%=transaction._id%>" class="btn border-shadow update" style=" background-color: red;">
+                            <span class="text-gradient"> Delete </span>
+                        </a>
+                    </td>
+                    <% }}) } %>
+                </tr>
+            </tbody>
+        </table>
+    </header>
+<div class="addbtn"></div>
+    <a href="/user/<%= account._id%>/transactions/newtransaction" class="btn border-shadow extra">
+        <span class="text-gradient"> New Transaction </span>
+    </a>
+    <a href="/user/:id<%= currentUser._id %>" class="btn border-shadow back" style="margin-left: 25%; background-color: rgb(92, 46, 46);">
+        <span class="text-gradient" > back </span>
+    </a>
+    <%- include ('../partial/_footer') %>

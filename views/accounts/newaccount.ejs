@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Manager</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" type="text/css" href="css/addac.css">
+    
+</head>
+<body>
+<div class="container">
+<div class="header">
+<h2>Add a New Account</h2>
+</div>
+<form action="/newaccount" method="POST" class="form" id="add_Acc" >
+    <div class="form-control">
+
+        
+        <input type="hidden" name="id" value="">
+        <input type="text" name="accountname" id="accountname" placeholder="Account Name" autocomplete="off">
+       
+        
+    </div>
+    <div class="form-control">
+       
+        <input type="text" name="description" id="description" placeholder="Description" autocomplete="off">
+        
+    </div>
+    <div class="form-control">
+        <label for="select">Choose your members</label>
+        <select multiple name="member" id="member">
+            <option disabled value="choose your option">choose</option>
+            <%for(var i=0;i<users.length;i++){ %>
+                <% if(users[i].email!==currentUser.email){%>
+            <option value="<%= users[i]._id %>"><%=users[i].email %></option>
+            <% }} %>
+        </select>
+        
+    </div>
+    <input type="Submit" value="Submit" class="btn">
+    <a href="user" class="btn border-shadow update" style=" background-color: red;">
+        <span class="text-gradient"> Back </span>
+    </a>
+</form>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</body>
+</html>

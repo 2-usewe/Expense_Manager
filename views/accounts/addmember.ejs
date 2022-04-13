@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Manager</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/css/addac.css">
+    
+</head>
+<body>
+<div class="container">
+<div class="header">
+<h2>Add member to account: <span style="color: rgb(196, 220, 150);"><%=account.accountname%></span> </h2>
+</div>
+<form action="/user/<%=account._id%>/addmember" method="POST" class="form" id="add_Acc" >
+    <div class="form-control">
+        <label for="select">Choose your members</label>
+        <select multiple name="member" id="member">
+            <option disabled value="choose your option">choose</option>
+            <% if(users.length>0){ %>
+                <% users.forEach(function(member){ %>
+            <option value="<%= member._id %>"><%= member.email %></option>
+            <%})}%>
+        </select>
+        
+    </div>
+    <input type="Submit" value="Submit" class="btn">
+    <a href="/user/:id<%= users._id %>" class="btn border-shadow update" style=" background-color: red;">
+        <span class="text-gradient"> Back </span>
+    </a>
+   
+</form>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</body>
+</html>

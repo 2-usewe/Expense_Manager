@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Manager</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" type="text/css" href="/css/addac.css">
+    
+</head>
+<body>
+<div class="container">
+<div class="header">
+<h2>Edit Transaction</h2>
+</div>
+<form action="/user/<%=accountId%>/alltransactions/<%=transaction._id%>" method="POST" class="form" id="add_Acc" >
+    <div class="form-control">
+        <label for="select">Choose your members</label>
+        <select  name="transaction[type]" id="type">
+            <option disabled value="choose your option">select account</option>
+            <option value="expense">expense</option>
+            <option value="income">income</option>
+            <option value="transform">transform</option>
+        </select>
+    <div class="form-control">      
+        <input type="hidden" name="id" value="">
+        <input type="number" name="transaction[amount]" id="amount" value="<%=transaction.amount%>" autocomplete="off">
+   </div>
+    <div class="form-control">    
+        <input type="text" name="transaction[description]" id="description" value="<%=transaction.description %> " autocomplete="off">       
+    </div>
+    </div>
+    <input type="Submit" value="Submit" class="btn">
+    <a href="/user/<%=accountId%>/alltransaction" class="btn border-shadow update">
+        <span class="text-gradient"> Back </span>
+    </a>
+</form>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</body>
+</html>
